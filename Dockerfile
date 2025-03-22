@@ -13,7 +13,8 @@ RUN \
     libpixman-1-0 \
     libslirp-dev \
     # for use in the container during development
-    jq
+    jq \
+    sccache
 USER esp
 COPY --from=qemu_builder /qemu /home/esp/qemu
 # Install gdb as this is not included anymore https://github.com/esp-rs/espup/issues/257
