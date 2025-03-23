@@ -20,14 +20,14 @@ RUN \
     sccache
 # Install qemu into /usr/local
 ARG QEMU_FILENAME=qemu-xtensa-softmmu-esp_develop_${QEMU_VERSION}_${QEMU_DATE}-x86_64-linux-gnu.tar.xz
-RUN wget https://github.com/espressif/qemu/releases/download/esp-develop-${QEMU_VERSION}-${QEMU_DATE}/${QEMU_FILENAME} && \
+RUN wget --progress=dot:mega https://github.com/espressif/qemu/releases/download/esp-develop-${QEMU_VERSION}-${QEMU_DATE}/${QEMU_FILENAME} && \
     tar --strip-components=1 -C /usr/local/ -xJpf ${QEMU_FILENAME} && \
     rm ${QEMU_FILENAME}
 USER esp
 # Install gdb as this is not included anymore https://github.com/esp-rs/espup/issues/257
 # Update if new release at https://github.com/espressif/binutils-gdb/releases is available
 ARG GDB_FILENAME=xtensa-esp-elf-gdb-${GDB_VERSION}-x86_64-linux-gnu.tar.gz
-RUN wget https://github.com/espressif/binutils-gdb/releases/download/esp-gdb-v${GDB_VERSION}/${GDB_FILENAME} && \
+RUN wget --progress=dot:mega https://github.com/espressif/binutils-gdb/releases/download/esp-gdb-v${GDB_VERSION}/${GDB_FILENAME} && \
     tar --strip-components=1 -C /home/esp/.rustup/toolchains/esp/xtensa-esp-elf/esp-*/xtensa-esp-elf/ -xzpf ${GDB_FILENAME} && \
     rm ${GDB_FILENAME}
 # Install some additional tools that need some time to compile
