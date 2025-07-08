@@ -1,5 +1,5 @@
 
-FROM espressif/idf-rust:esp32_1.85.0.0
+FROM espressif/idf-rust:esp32_1.86.0.0
 ARG GDB_VERSION=15.2_20241112
 ARG QEMU_VERSION=9.2.2
 ARG QEMU_DATE=20250228
