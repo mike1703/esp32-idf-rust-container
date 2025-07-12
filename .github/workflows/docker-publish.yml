@@ -6,12 +6,18 @@ name: Docker
 # documentation.
 
 on:
+  # for manual runs
+  workflow_dispatch:
+  # for scheduled runs
   schedule:
     - cron: '30 12 1 * *'
+  # for pushes and pull requests
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
+  # for pull requests against main branch
+  # This is used to avoid running the workflow on PRs
   pull_request:
     branches: [ "main" ]
 
